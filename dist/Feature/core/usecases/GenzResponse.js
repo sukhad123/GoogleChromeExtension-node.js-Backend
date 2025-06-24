@@ -9,13 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.professionalUsecase = professionalUsecase;
+exports.genzUseCase = genzUseCase;
 const openai_1 = require("../../infrastructure/services/openai");
-{ /**Professional Response */ }
-const PROMPT = "Please rewrite the following text in a professional, polished tone suitable for workplace communication. Keep the original meaning intact, and correct any grammar or clarity issues as needed:";
-function professionalUsecase(text) {
+{ /**Genz Response */ }
+const PROMPT = "You are an AI Assistant, you will recieve a string from user and your job is to rewrite that text in a genz way. Don't say hi/hello just rewrite and make the text super professional. ";
+function genzUseCase(text) {
     return __awaiter(this, void 0, void 0, function* () {
         const res = yield (0, openai_1.openAI)(PROMPT, text);
-        console.log(res);
+        return res;
     });
 }

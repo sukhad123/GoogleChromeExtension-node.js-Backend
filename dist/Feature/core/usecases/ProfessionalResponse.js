@@ -9,19 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mainController = mainController;
-{ /**Main Controller of the app */ }
-const ProfessionalResponse_1 = require("../../core/usecases/ProfessionalResponse");
-function mainController(text, type) {
+exports.professionalUsecase = professionalUsecase;
+const openai_1 = require("../../infrastructure/services/openai");
+{ /**Professional Response */ }
+const PROMPT = "You are an AI Assistant, you will recieve a string from user and your job is to rewrite that text in a professional way. Don't say hi/hello just rewrite and make the text super professional. ";
+function professionalUsecase(text) {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log("hi");
-        //read and redirect as required
-        if (type === 'genz') {
-            //TODO implement the genz call
-        }
-        else {
-            yield (0, ProfessionalResponse_1.professionalUsecase)(text);
-            //TODO implement the professional call
-        }
+        const res = yield (0, openai_1.openAI)(PROMPT, text);
+        return res;
     });
 }

@@ -1,7 +1,6 @@
- 
-// Define the port and host
+import { mainController } from './Feature/infrastructure/controller/MainController';
 const port = 3000;
-import express from 'express'
+import express, { Request, Response } from 'express'
 import cors from 'cors'
 const host = 'localhost';
 const app = express();
@@ -9,10 +8,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 //it will make a call
-app.post('/api', (req, res) => {
-    console.log('Body:', req.body);
+app.post('/api', async (req: any, res: any) => {
+    
     const { text, style } = req.body;
-    return "Hey how are you";
+    const value = await mainController(text, style);
+   
+    return res.json({ text: value });
+    
 });
 // Start the server
 app.listen(port, host, () => {
