@@ -24,8 +24,13 @@ app.use(express_1.default.json());
 app.post('/api', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { text, style } = req.body;
     const value = yield (0, MainController_1.mainController)(text, style);
+    console.log(value);
     return res.json({ text: value });
 }));
+//test
+app.get('/', (req, res) => {
+    return res.json("hi this is sukhad backend");
+});
 // Start the server
 app.listen(port, host, () => {
     console.log(`Server running at http://${host}:${port}/`);

@@ -12,10 +12,14 @@ app.post('/api', async (req: any, res: any) => {
     
     const { text, style } = req.body;
     const value = await mainController(text, style);
-   
+   console.log(value);
     return res.json({ text: value });
     
 });
+//test
+app.get('/',(req:any,res:any)=>{
+    return res.json("hi this is sukhad backend");
+})
 // Start the server
 app.listen(port, host, () => {
     console.log(`Server running at http://${host}:${port}/`);
